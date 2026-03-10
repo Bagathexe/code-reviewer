@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR Review Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Branch Review Dashboard</h1>
+        </header>
+        
+        <main id="main-content">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Loading PR information...</p>
+            </div>
+            
+            <div class="pr-container" id="pr-container" style="display: none;">
+                <!-- PR Basic Information -->
+                <section class="pr-info-section">
+                    <h2>📋 PR Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Title:</label>
+                            <span id="pr-title">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>PR Number:</label>
+                            <span id="pr-number">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Repository:</label>
+                            <span id="repo-name">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Author:</label>
+                            <span id="pr-author">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Created:</label>
+                            <span id="creation-date">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Status:</label>
+                            <span id="pr-status" class="status-badge">-</span>
+                        </div>
+                        <div class="info-item branch-info">
+                            <label>Branch:</label>
+                            <span id="branch-info">
+                                <span id="source-branch">-</span> 
+                                <span class="arrow">→</span> 
+                                <span id="target-branch">-</span>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Code Changes Section -->
+                <section class="changes-section">
+                    <h2>📝 Code Changes</h2>
+                    
+                    <div class="changes-summary">
+                        <div class="summary-item">
+                            <span class="label">Files Modified:</span>
+                            <span id="files-count" class="count">0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Lines Added:</span>
+                            <span id="lines-added" class="count added">+0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Lines Removed:</span>
+                            <span id="lines-removed" class="count removed">-0</span>
+                        </div>
+                    </div>
+
+                    <div class="files-list">
+                        <h3>Modified Files</h3>
+                        <ul id="modified-files">
+                            <!-- Files will be populated here -->
+                        </ul>
+                    </div>
+
+                    <div class="diff-preview">
+                        <h3>Code Diff Preview</h3>
+                        <div class="diff-container">
+                            <pre id="diff-content">Loading diff...</pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="error-message" id="error-message" style="display: none;">
+                <h2>❌ Error</h2>
+                <p id="error-text">Failed to load PR information</p>
+                <button onclick="loadPRData()" class="retry-btn">Retry</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
